@@ -93,3 +93,120 @@ let originalstr1 = "Hello Wolrd!";
 let substring1 = originalstr1.slice(0,5);
 console.log(substring1);
 
+//Case convertion: - toUpperCase() and toLowerCase() method
+let origstr12 = "Hello World";
+let uppercaseString = origstr12.toUpperCase();
+console.log(uppercaseString);
+
+//Trimming :
+//the trim() method is used for trimming (removing) white spaces from both ends of a string.
+// White spaces include spaces, tabs, and newline characters. The trim() method does not modify the original string; instead, 
+//it returns a new string with leading and trailing white spaces removed.
+let str12 = " this is a string with spaces  ";
+let trimStr = str12.replace(/\s/g, '');
+console.log(trimStr);
+let trim2 = str12.trim()
+console.log(trim2);
+//The expression /\s/g is a regular expression in JavaScript, 
+//and it is used with the replace method to remove all white spaces from a string.
+
+//string split
+//syntax of split method string.split(separtor,limit);
+//separator: This is the delimiter based on which the string will be split.
+// It can be a string or a regular expression. 
+//If this parameter is omitted or an empty string is provided, 
+//the string will be split into an array of characters.
+
+//limit: This is an optional parameter that specifies the maximum number of elements to include in the resulting array. 
+//If this parameter is provided, the array will have at most limit elements,
+// with the last element containing the remaining part of the string.
+
+//1)Splitting by Space:
+let sentence = "This is a sample sentence";
+let words = sentence.split(' ');
+console.log(words); // Outputs: ["This", "is", "a", "sample", "sentence."]
+
+//2)Splitting by Comma and limit:
+
+let csvData = "John,Doe,30,New York";
+let values = csvData.split(","); // Outputs: ["John", "Doe", "30", "New York"]
+let values1 = csvData.split(",",3)
+console.log(values,values1); // Outputs: ["John", "Doe", "30"]
+
+//3)splitting by Regular Expression:
+let mixedData = "apple,banana;cherry|data";
+let items = mixedData.split(/[;,|]/);
+console.log(items); //['apple', 'banana', 'cherry', 'data']
+
+//4)Splitting with Limit:
+let longString = "one, two, three, four, five";
+let limitedArray = longString.split(",",3);
+console.log(limitedArray);  ['one', ' two', ' three']
+
+
+//Join() method:
+//method in JavaScript is used to join the elements of an array into a string. 
+//It takes an optional parameter, which is a separator that specifies how the array elements should be separated in the resulting string.
+// If no separator is provided, the default is a comma (,).
+
+//Basic Syntax:array.join(separator);
+//array: The array whose elements you want to join into a string.
+//separator: (Optional) A string that specifies how to separate the elements in the resulting string.
+// If omitted, a comma is used as the default separator.
+
+//Example Usage:
+let fruits = ["apple", "banana", "orange"];
+let joinString = fruits.join(",")
+console.log(joinString); // Outputs: "apple, banana, orange"
+
+//Default Behavior: If no separator is specified, the join() method uses a comma as the default separator.
+let numbers = [1,2,3,4,5];
+let defnum = numbers.join();
+console.log(defnum); // Outputs: "1,2,3,4,5"
+
+//Use Case with an Empty Separator:You can use an empty string as the separator to join the elements without any separation.
+let character = ['a', 'b', 'c', 'd'];
+let noSep = character.join('');
+console.log(noSep); // Outputs: "abcd"
+
+//Joining with a Custom Separator:
+//You can use a custom separator to join the elements with a different character or string.
+let colors = ['red', 'green','blue'];
+let custSep = colors.join('-');
+console.log(custSep); // Outputs: "red - green - blue"
+
+//The split() and join() methods are often used together when working with strings and arrays. Let's go through an example:
+//Scenario:
+//Suppose you have a string containing names separated by commas, 
+//and you want to split this string into an array of names. Later,
+// you want to modify the array and join the elements back into a string.
+
+//original string of names separated ny comms
+let namesString = 'John, Jane, Bob, Alice';
+
+//step 1 : split the string into array using split()
+let namesArray = namesString.split(', ');
+
+// Step 2: Modify the array (for example, add a new name)
+namesArray.push("Harshal");
+
+//// Step 3: Join the array elements into a string using join()
+let updateNameString = namesArray.join(', ');
+
+//Display the result
+console.log("Original string:", namesString); //Original string: John, Jane, Bob, Alice
+console.log("Array of names:", namesArray); //Array of names: [ 'John', 'Jane', 'Bob', 'Alice', 'Harshal' ]
+console.log("Updated string:", updateNameString); //Updated string: John, Jane, Bob, Alice, Harshal
+
+
+
+
+
+
+
+
+
+
+
+
+

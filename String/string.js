@@ -1,4 +1,4 @@
-//Declaration:
+//-----------------------------------------> Declaration: <-----------------------------------------
 let singleQuoted = 'This is string';
 let doubleQuoted = "This is also string";
 let backticks = `Strings can be create with backtiks`
@@ -7,7 +7,7 @@ console.log(singleQuoted)
 console.log(doubleQuoted) 
 console.log(backticks) 
 
-//immutable nature:
+//-----------------------------------------> immutable nature: <----------------------------------------
 //Strings in JavaScript are immutable, meaning their values cannot be changed after they are created.
 //While you can perform operations on strings to create new strings, the original string remains unchanged.
 let originalString = "Hello";
@@ -22,7 +22,7 @@ console.log(str1[0]); //H
 console.log(str1.length) //7
 console.log(str1[10]); //undefine
 
-//iterating
+//-----------------------------------------> iterating <-----------------------------------------
 //a)using for loop:
 //You can use a for loop along with the string length to iterate over each character.
 
@@ -49,7 +49,7 @@ for(let char of myStr2) {
 
 
 
-//Concatenation:
+//-----------------------------------------> Concatenation: <-----------------------------------------
 //Concatenation is the process of combining two or more strings into a single string.
 // In JavaScript, you can concatenate strings using the + operator or the concat method.
 // Here's an explanation of both methods:
@@ -73,7 +73,7 @@ console.log(greeting);
 
 
 
-//Substring Extraction:
+//-----------------------------------------> Substring Extraction: <-----------------------------------------
 //In JavaScript, you can extract a substring from a string using:
 //the substring method or by using string slicing with square brackets.
 
@@ -98,7 +98,7 @@ let origstr12 = "Hello World";
 let uppercaseString = origstr12.toUpperCase();
 console.log(uppercaseString);
 
-//Trimming :
+//-----------------------------------------> Trimming : <-----------------------------------------
 //the trim() method is used for trimming (removing) white spaces from both ends of a string.
 // White spaces include spaces, tabs, and newline characters. The trim() method does not modify the original string; instead, 
 //it returns a new string with leading and trailing white spaces removed.
@@ -110,7 +110,7 @@ console.log(trim2);
 //The expression /\s/g is a regular expression in JavaScript, 
 //and it is used with the replace method to remove all white spaces from a string.
 
-//string split
+// -----------------------------------------> string split <-----------------------------------------
 //syntax of split method string.split(separtor,limit);
 //separator: This is the delimiter based on which the string will be split.
 // It can be a string or a regular expression. 
@@ -144,7 +144,7 @@ let limitedArray = longString.split(",",3);
 console.log(limitedArray);  ['one', ' two', ' three']
 
 
-//Join() method:
+//-----------------------------------------> Join() method: <----------------------------------------------------
 //method in JavaScript is used to join the elements of an array into a string. 
 //It takes an optional parameter, which is a separator that specifies how the array elements should be separated in the resulting string.
 // If no separator is provided, the default is a comma (,).
@@ -197,6 +197,144 @@ let updateNameString = namesArray.join(', ');
 console.log("Original string:", namesString); //Original string: John, Jane, Bob, Alice
 console.log("Array of names:", namesArray); //Array of names: [ 'John', 'Jane', 'Bob', 'Alice', 'Harshal' ]
 console.log("Updated string:", updateNameString); //Updated string: John, Jane, Bob, Alice, Harshal
+
+//------------------------------------> Replace Characters <------------------------------------------------------
+//To replace characters in a string in JavaScript,
+// you can use the replace() method. 
+//The replace() method searches a string for a specified value or a regular expression and returns a new string where the specified values are replaced
+
+//normal
+ let origi = "Hello, World! Hii";
+ let replacestr = origi.replace('World', 'Universe'); 
+ 
+ //regular expressions for more complex replacements or  Multiple Occurrences:
+ let repstr = origi.replace(/l/g, 'X') 
+
+ //Case-Insensitive Replacement:
+ let repstr1 = origi.replace(/hii/i,'bye')
+
+ console.log(replacestr); // Outputs: "Hello, Universe! Hii"
+ console.log(repstr); // Outputs: HeXXo, WorXd! Hii
+ console.log(repstr1); //Hello, World! bye
+
+
+
+ //------------------------------------------->Reverse a string <----------------------------------------------------
+ //1)Using Array Methods (split() and reverse()): (best method)
+ let origs = "Hello, World!";
+ let revStr = origs.split('').reverse().join('');
+ console.log(revStr);
+
+ //2)Using a Loop:
+ let orrg = "Hello, World!";
+ let revsString =  '';
+
+ for(let i =orrg.length-1; i >= 0; i--) {
+    revsString += orrg[i]
+ }
+ console.log(revsString);
+
+ //3)Using Array.from() and reverse():
+ //The Array.from() method is used to create an array from an iterable
+ // (in this case, the original string), and then reverse() and join('') are applied.
+ let originalString12 = "Hello, Wolrd!";
+ let revString = Array.from(originalString12).reverse().join('');
+ console.log(revString);
+
+//--------------------------------------->Palindrome string <------------------------------------------------------------------
+//A palindrome is a string that reads the same backward as forward.
+let paliStr = "A man, a plan, a canal, Panama!";
+let clranString15 = paliStr.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+
+let revStr14 = clranString15.split('').reverse().join('');
+if( clranString15  ===  revStr14) {
+    console.log(clranString15,"is Palindrome");
+} else {
+    console.log(clranString15,"is Not Palindrome");
+}
+
+//Using functionction
+function isPalidrome1(str) {
+
+    const cleanzstr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+    console.log(cleanzstr);
+
+    const revStr = cleanzstr.split('').reverse().join('');
+   
+    return cleanzstr === revStr;
+}
+ // Example usage:
+ let testString1 = "A man, a plan, a canal, Panama!";
+ console.log(isPalidrome1(testString1));
+ 
+
+//--------------------------------->  ANAGRAM STRING <---------------------------------------------
+
+//An anagram is a word or phrase formed by rearranging the letters of another.
+// To check if two strings are anagrams, 
+//you can compare whether they have the same characters with the same frequency.
+
+function areAnagramString(str1,str2) {
+
+    let cleanstr1 = str1.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+    let cleanstr2 = str2.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+
+    return cleanstr1.split('').sort().join('') === cleanstr2.split('').sort().join('');
+
+}
+
+let word1 = 'abcd';
+let world2 = 'h';
+
+if(areAnagramString(word1,world2)) {
+    console.log(`${word1} and ${world2} are anagram`)
+} else {
+    console.log(`${word1} and ${world2} are not anagram`);
+}
+
+
+//-----------------------------------> longestSubstring <---------------------------
+function longestSubstringWithoutRepeating(s) {
+    let longestSubstring = '';
+    let currentSubstring = '';
+    let charIndexMap = {};
+
+    for (let i = 0; i < s.length; i++) {
+        let currentChar = s[i];
+
+        if (charIndexMap[currentChar] === undefined || charIndexMap[currentChar] < i - currentSubstring.length) {
+            currentSubstring += currentChar;
+        } else {
+            currentSubstring = s.substring(charIndexMap[currentChar] + 1, i + 1);
+        }
+
+        charIndexMap[currentChar] = i;
+
+        if (currentSubstring.length > longestSubstring.length) {
+            longestSubstring = currentSubstring;
+        }
+    }
+
+    return longestSubstring;
+}
+
+// Example usage:
+let inputString = "Harshal";
+let result = longestSubstringWithoutRepeating(inputString);
+console.log(result);
+// Outputs: "Harsh"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
